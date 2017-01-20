@@ -1,0 +1,4 @@
+bin/
+*.class
+src/test/
+src/excercise/
