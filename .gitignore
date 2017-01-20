@@ -3,3 +3,4 @@ bin/
 src/test/
 src/excercise/
 .classpath
+.DS_Store
