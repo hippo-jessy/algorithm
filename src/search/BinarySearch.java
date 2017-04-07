@@ -10,7 +10,7 @@ public class BinarySearch {
         int index = 0;
        while(true){
            if(right< left) return -1;
-           index = right + (right-left)/2;
+           index = left + (right-left)/2;
            if(data[index] < key){
                left = index + 1;
            }else if (data[index] > key){
