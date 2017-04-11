@@ -1,7 +1,7 @@
 package search;
 
 /**
- * This is a common implementation of binary search.
+ * This is a common implementation of binary search for sorted .
  */
 public class BinarySearch {
     public static int binarySearch(int[] data, int key){
