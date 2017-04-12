@@ -1,23 +1,25 @@
 package datastructure.stack;
 
+import java.util.EmptyStackException;
+
 /**
- * User: hippo
- * Date: 4/11/17
- * Time: 12:48 AM
+ * This is a simple implementaiton of stack.
  */
 public class Stack<T> {
     private StackNode<T> head;
+
     private static class StackNode<T> {
         private T data;
         StackNode<T> next;
-        public StackNode(T data){
+
+        public StackNode(T data) {
             this.data = data;
         }
     }
 
-    public T pop(){
-        if(head == null){
-            return null;
+    public synchronized T pop() {
+        if (head == null) {
+            throw new EmptyStackException();
         }
         T tmp = head.data;
         head = head.next;
@@ -25,12 +27,23 @@ public class Stack<T> {
     }
 
 
-    public void push(T data){
-
+    public synchronized void push(T data) {
+        StackNode<T> node = new StackNode<>(data);
+        node.next= head;
+        head = node;
     }
 
-    public boolean isEmpty(){
-        return (head == null)? true: false;
+    public synchronized T peek(){
+        if(head == null){
+            throw new EmptyStackException();
+        }else{
+            return head.data;
+        }
+    }
+
+
+    public boolean isEmpty() {
+        return head == null;
     }
 
 
