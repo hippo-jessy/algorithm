@@ -17,7 +17,7 @@ public class Stack<T> {
         }
     }
 
-    public synchronized T pop() {
+    public T pop() {
         if (head == null) {
             throw new EmptyStackException();
         }
@@ -27,16 +27,16 @@ public class Stack<T> {
     }
 
 
-    public synchronized void push(T data) {
+    public void push(T data) {
         StackNode<T> node = new StackNode<>(data);
-        node.next= head;
+        node.next = head;
         head = node;
     }
 
-    public synchronized T peek(){
-        if(head == null){
+    public T peek() {
+        if (head == null) {
             throw new EmptyStackException();
-        }else{
+        } else {
             return head.data;
         }
     }
