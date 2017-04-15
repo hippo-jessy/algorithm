@@ -37,7 +37,7 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
 
     @Override
     public T removeMax() {
-        if (heapArray[0] == null) {
+        if (currentSize == 0) {
             throw new NoSuchElementException();
         }
         T tmp = heapArray[0];
@@ -50,7 +50,7 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
 
     @Override
     public boolean isEmpty() {
-        return heapArray[0] == null;
+        return currentSize == 0;
     }
 
 
@@ -69,7 +69,7 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T> {
         T tmp = heapArray[index];
         while ((index * 2 + 1) <= (currentSize - 1)) {
             int leftChild = index * 2 + 1;
-            int rightChild = index * 2 + 2;
+            int rightChild = leftChild +1;
             int largerChild;
 
             if (rightChild < currentSize && heapArray[rightChild].compareTo(heapArray[leftChild]) > 0) {
