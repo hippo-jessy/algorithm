@@ -50,12 +50,13 @@ public class PreorderTraversal {
 
     /**
      * This method is more efficient than the last one.
+     *
      * @param root
      * @return
      */
     public List<Integer> iterativePreorderTraversalTwo(TreeNode root) {
         List<Integer> result = new ArrayList<>();
-        if(root == null){
+        if (root == null) {
             return result;
         }
         LinkedList<TreeNode> stack = new LinkedList<>();
@@ -63,18 +64,41 @@ public class PreorderTraversal {
         while (!stack.isEmpty()) {
             TreeNode tmp = stack.pop();
             result.add(tmp.val);
-            if(tmp.right != null){
+            if (tmp.right != null) {
                 stack.push(tmp.right);
             }
-            if(tmp.left != null){
+            if (tmp.left != null) {
                 stack.push(tmp.left);
             }
         }
         return result;
     }
 
+    /**
+     * This method only push right nodes into the stack.
+     *
+     * @param root
+     * @return
+     */
     public List<Integer> iterativePreorderTraversalThree(TreeNode root) {
-
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        TreeNode currentNode = root;
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        while (!stack.isEmpty() || currentNode != null) {
+            if (currentNode != null) {
+                result.add(currentNode.val);
+                if (currentNode.right != null) {
+                    stack.push(currentNode.right);
+                }
+                currentNode = currentNode.left;
+            } else {
+                currentNode = stack.pop();
+            }
+        }
+        return result;
     }
 
 }
